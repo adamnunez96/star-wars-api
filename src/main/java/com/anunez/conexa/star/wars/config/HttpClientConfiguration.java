@@ -1,10 +1,10 @@
 package com.anunez.conexa.star.wars.config;
 
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.conn.HttpClientConnectionManager;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.core5.util.Timeout;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,21 +28,21 @@ public class HttpClientConfiguration {
     private int swappiConnectionRequestTimeout;
 
     @Bean("connManager")
-    public HttpClientConnectionManager connManager(){
+    public PoolingHttpClientConnectionManager connManager() {
         final PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
-        cm.setMaxTotal(poolMaxTotal);
         cm.setDefaultMaxPerRoute(poolMaxPerRoute);
+        cm.setMaxTotal(poolMaxTotal);
         return cm;
     }
 
     private ClientHttpRequestFactory getHttpClientRequestFactory(int socketTimeout, int connectTimeout, int connectionRequestTimeout,
-                                                                 HttpClientConnectionManager connManager) {
+                                                                 PoolingHttpClientConnectionManager connManager) {
         RequestConfig requestConfig = RequestConfig.custom()
-                .setSocketTimeout(socketTimeout)
-                .setConnectTimeout(connectTimeout)
-                .setConnectionRequestTimeout(connectionRequestTimeout)
+                .setResponseTimeout(Timeout.ofMilliseconds(socketTimeout))
+                .setConnectTimeout(Timeout.ofMilliseconds(connectTimeout))
+                .setConnectionRequestTimeout(Timeout.ofMilliseconds(connectionRequestTimeout))
                 .build();
-        CloseableHttpClient httpClient = HttpClientBuilder.create()
+        CloseableHttpClient httpClient = HttpClients.custom()
                 .setDefaultRequestConfig(requestConfig)
                 .setConnectionManager(connManager).build();
         return new HttpComponentsClientHttpRequestFactory(httpClient);
