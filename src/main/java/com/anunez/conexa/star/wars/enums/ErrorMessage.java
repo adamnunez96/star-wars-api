@@ -5,7 +5,8 @@ public enum ErrorMessage {
     NOT_FOUND("02", "Resource Not Found"),
     BAD_REQUEST("03", "Bad Request"),
     UNAUTHORIZED("04", "Unauthorized"),
-    FORBIDDEN("05", "Forbidden");
+    FORBIDDEN("05", "Forbidden"),
+    UNPROCESSABLE_ENTITY("06", "Unprocessable Entity");
 
     private final String code;
     private final String message;

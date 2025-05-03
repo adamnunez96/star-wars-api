@@ -1,8 +1,10 @@
 package com.anunez.conexa.star.wars.exception;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class InternalServerException extends RuntimeException {
 
     private String code;

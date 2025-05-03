@@ -22,3 +22,7 @@ spring:
       console:
         enabled: true
         path: /h2-console
+
+service:
+  star-wars:
+    url: ${SERVICE_URL:http://localhost:8080/v1}
