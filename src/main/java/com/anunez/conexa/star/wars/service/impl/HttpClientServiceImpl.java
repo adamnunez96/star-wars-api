@@ -1,4 +1,4 @@
-package com.anunez.conexa.star.wars.repository.impl;
+package com.anunez.conexa.star.wars.service.impl;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -25,17 +25,17 @@ import com.anunez.conexa.star.wars.constant.ApiConstant;
 import com.anunez.conexa.star.wars.enums.ErrorMessage;
 import com.anunez.conexa.star.wars.exception.InternalServerException;
 import com.anunez.conexa.star.wars.exception.NotFoundException;
-import com.anunez.conexa.star.wars.repository.HttpClient;
+import com.anunez.conexa.star.wars.service.HttpClientService;
 import com.anunez.conexa.star.wars.utils.RequestUtils;
 
 @Repository
-public class HttpClientImpl implements HttpClient{
+public class HttpClientServiceImpl implements HttpClientService{
 
-    private static final Logger LOG = LoggerFactory.getLogger(HttpClientImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HttpClientServiceImpl.class);
 
     private final RestTemplate restTemplate;
 
-    public HttpClientImpl(@Qualifier("swappiRestTemplate") RestTemplate restTemplate) {
+    public HttpClientServiceImpl(@Qualifier("swappiRestTemplate") RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 

@@ -16,14 +16,13 @@ import com.anunez.conexa.star.wars.bean.PeopleGetRes;
 import com.anunez.conexa.star.wars.bean.PersonGetRes;
 import com.anunez.conexa.star.wars.bean.PersonGetResByName;
 import com.anunez.conexa.star.wars.exception.UnprocessableEntity;
-import com.anunez.conexa.star.wars.repository.impl.HttpClientImpl;
 import com.anunez.conexa.star.wars.utils.MockUtils;
 
 @ExtendWith(MockitoExtension.class)
 public class ApiServiceImplTest {
 
     @Mock
-    private HttpClientImpl httpClient;
+    private HttpClientServiceImpl httpClient;
 
     @InjectMocks
     private ApiServiceImpl apiServiceImpl;

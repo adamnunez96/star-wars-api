@@ -1,10 +1,10 @@
-package com.anunez.conexa.star.wars.repository;
+package com.anunez.conexa.star.wars.service;
 
 import com.anunez.conexa.star.wars.bean.PeopleGetRes;
 import com.anunez.conexa.star.wars.bean.PersonGetRes;
 import com.anunez.conexa.star.wars.bean.PersonGetResByName;
 
-public interface HttpClient {
+public interface HttpClientService {
 
     PersonGetRes getPerson(String id);
 

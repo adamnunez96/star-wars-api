@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.anunez.conexa.star.wars.bean.PeopleGetRes;
 import com.anunez.conexa.star.wars.bean.PersonBasicInfo;
+import com.anunez.conexa.star.wars.bean.auth.LoginReq;
+import com.anunez.conexa.star.wars.bean.auth.RegisterReq;
 
 import lombok.experimental.UtilityClass;
 
@@ -18,6 +20,22 @@ public class MockUtils {
                 .next("https://www.swapi.tech/api/people?page=3&limit=10")
                 .previous("https://www.swapi.tech/api/people?page=1&limit=10")
                 .results(List.of(new PersonBasicInfo()))
+                .build();
+    }
+
+    public static LoginReq getLoginReq() {
+        return LoginReq.builder()
+                .username(TEST)
+                .password(TEST)
+                .build();
+    }
+
+    public static RegisterReq getRegisterReq() {
+        return RegisterReq.builder()
+                .username(TEST)
+                .password(TEST)
+                .firstname(TEST)
+                .lastname(TEST)
                 .build();
     }
     

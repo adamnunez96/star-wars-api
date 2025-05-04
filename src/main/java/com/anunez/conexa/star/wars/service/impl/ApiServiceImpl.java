@@ -9,7 +9,6 @@ import com.anunez.conexa.star.wars.bean.PeopleGetRes;
 import com.anunez.conexa.star.wars.bean.SwappiRes;
 import com.anunez.conexa.star.wars.enums.ErrorMessage;
 import com.anunez.conexa.star.wars.exception.UnprocessableEntity;
-import com.anunez.conexa.star.wars.repository.impl.HttpClientImpl;
 import com.anunez.conexa.star.wars.service.ApiService;
 
 @Service
@@ -17,12 +16,12 @@ public class ApiServiceImpl implements ApiService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ApiServiceImpl.class);
 
-    @Value("${service.base.url}")
+    @Value("${service.base.url:http://localhost:8080/v1}")
     private String serviceBaseUrl;
 
-    private final HttpClientImpl httpClient;
+    private final HttpClientServiceImpl httpClient;
 
-    public ApiServiceImpl(HttpClientImpl httpClient) {
+    public ApiServiceImpl(HttpClientServiceImpl httpClient) {
         this.httpClient = httpClient;
     }
 
@@ -41,6 +40,14 @@ public class ApiServiceImpl implements ApiService {
     @Override
     public PeopleGetRes getPeople(int page, int limit) {
         LOG.info("Fetching people with page: {}, limit: {}", page, limit);
+
+        if (page < 1) { 
+            page = 1; 
+        }
+            
+        if (limit < 1) { 
+            limit = 10; 
+        }
 
         PeopleGetRes peopleGetRes = httpClient.getPeople(page, limit);
 

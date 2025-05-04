@@ -1,4 +1,4 @@
-package com.anunez.conexa.star.wars.repository.impl;
+package com.anunez.conexa.star.wars.service.impl;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -20,16 +20,17 @@ import com.anunez.conexa.star.wars.bean.PersonGetRes;
 import com.anunez.conexa.star.wars.bean.PersonGetResByName;
 import com.anunez.conexa.star.wars.exception.InternalServerException;
 import com.anunez.conexa.star.wars.exception.NotFoundException;
+import com.anunez.conexa.star.wars.service.impl.HttpClientServiceImpl;
 import com.anunez.conexa.star.wars.utils.MockUtils;
 
 @ExtendWith(MockitoExtension.class)
-public class HttpClientImplTest {
+public class HttpClientServiceImplTest {
 
     @Mock
     private RestTemplate restTemplate;
     
     @InjectMocks
-    private HttpClientImpl httpClientImpl;
+    private HttpClientServiceImpl httpClientImpl;
 
     @Test
     void testGetPerson_Success() {
