@@ -12,7 +12,7 @@ import com.anunez.conexa.star.wars.bean.SwappiRes;
 
 
 @RestController
-@RequestMapping("${version}")
+@RequestMapping("${version}/api")
 @Validated
 public class ApiControllerDecorator implements ApiController {
 
