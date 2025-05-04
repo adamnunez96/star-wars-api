@@ -2,6 +2,8 @@ package com.anunez.conexa.star.wars.bean.auth;
 
 import java.io.Serializable;
 
+import com.anunez.conexa.star.wars.enums.Role;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +18,5 @@ public class RegisterReq implements Serializable {
     private String password;
     private String firstname;
     private String lastname;
+    private Role role;
 }

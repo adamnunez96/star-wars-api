@@ -7,6 +7,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.anunez.conexa.star.wars.enums.Role;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,16 +32,16 @@ import lombok.NoArgsConstructor;
 public class User implements UserDetails {
     @Id
     @GeneratedValue
-    Integer id;
+    private Integer id;
     @Basic
     @Column(nullable = false)
-    String username;
+    private String username;
     @Column(nullable = false)
-    String lastname;
-    String firstname;
-    String password;
+    private String lastname;
+    private String firstname;
+    private String password;
     @Enumerated(EnumType.STRING) 
-    Role role;
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

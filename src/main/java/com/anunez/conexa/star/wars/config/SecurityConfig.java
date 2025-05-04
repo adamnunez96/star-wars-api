@@ -30,6 +30,8 @@ public class SecurityConfig {
               authRequest
                 .requestMatchers("/v1/auth/**").permitAll() // Permitir acceso a rutas de autenticación
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Permitir acceso a Swagger
+                .requestMatchers("/v1/api/person").hasAuthority("ADMIN") // Permitir acceso a ruta de personas solo para ADMIN
+                .requestMatchers("/v1/api/people").hasAnyAuthority("ADMIN", "USER") // Permitir acceso a rutas de API para ADMIN y USER
                 .anyRequest().authenticated()
                 )
             .sessionManagement(sessionManager->
