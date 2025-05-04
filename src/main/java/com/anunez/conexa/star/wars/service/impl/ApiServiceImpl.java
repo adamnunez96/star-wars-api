@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.anunez.conexa.star.wars.bean.PeopleGetRes;
 import com.anunez.conexa.star.wars.bean.SwappiRes;
+import com.anunez.conexa.star.wars.enums.ErrorMessage;
+import com.anunez.conexa.star.wars.exception.UnprocessableEntity;
 import com.anunez.conexa.star.wars.repository.impl.HttpClientImpl;
 import com.anunez.conexa.star.wars.service.ApiService;
 
@@ -15,8 +17,8 @@ public class ApiServiceImpl implements ApiService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ApiServiceImpl.class);
 
-    @Value("${service.star-wars.url}")
-    private String baseUrl;
+    @Value("${service.base.url}")
+    private String serviceBaseUrl;
 
     private final HttpClientImpl httpClient;
 
@@ -42,8 +44,12 @@ public class ApiServiceImpl implements ApiService {
 
         PeopleGetRes peopleGetRes = httpClient.getPeople(page, limit);
 
-        String nextPage = peopleGetRes.getNext() != null ? baseUrl.concat("/people") + "?page=" + (page + 1) + "&limit=" + limit : null;
-        String previousPage = peopleGetRes.getPrevious() != null ? baseUrl.concat("/people") + "?page=" + (page - 1) + "&limit=" + limit : null;
+        if (peopleGetRes == null) {
+            throw new UnprocessableEntity(ErrorMessage.UNPROCESSABLE_ENTITY.getCode(), ErrorMessage.UNPROCESSABLE_ENTITY.getMessage());
+        }
+
+        String nextPage = peopleGetRes.getNext() != null ? serviceBaseUrl.concat("/people") + "?page=" + (page + 1) + "&limit=" + limit : null;
+        String previousPage = peopleGetRes.getPrevious() != null ? serviceBaseUrl.concat("/people") + "?page=" + (page - 1) + "&limit=" + limit : null;
 
         peopleGetRes.setPrevious(previousPage);
         peopleGetRes.setNext(nextPage);

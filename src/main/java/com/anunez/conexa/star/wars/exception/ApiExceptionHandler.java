@@ -26,4 +26,13 @@ public class ApiExceptionHandler extends RuntimeException {
         return ResponseEntity.status(404).body(errorMessage);
     }
 
+    @ExceptionHandler(value = UnprocessableEntity.class)
+    public ResponseEntity<ErrorMessage> handleUnprocessableEntity(UnprocessableEntity e) {
+        ErrorMessage errorMessage = ErrorMessage.builder()
+                .code(e.getCode())
+                .message(e.getMessage())
+                .build();
+        return ResponseEntity.status(422).body(errorMessage);
+    }
+
 }

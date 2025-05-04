@@ -5,15 +5,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class NotFoundException extends RuntimeException{
+public class UnprocessableEntity extends RuntimeException {
 
     private String code;
     private String message;
 
-    public NotFoundException(String code, String message) {
+    public UnprocessableEntity(String code, String message) {
         super(message);
         this.code = code;
         this.message = message;
     }
-
+    
 }
