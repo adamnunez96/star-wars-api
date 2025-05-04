@@ -14,11 +14,10 @@ spring:
       enabled: true
 
   datasource:
-    datasource:
     url: jdbc:postgresql://localhost:5432/star_wars
     #jdbc:postgresql://13.59.27.108:5432/star_wars
-    username: admin
-    password: admin
+    username: postgres
+    password: postgres
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -32,4 +31,4 @@ spring:
 
 service:
   base:
-    url: ${SERVICE_URL}
+    url: ${SERVICE_URL:http://localhost:8080}

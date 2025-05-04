@@ -25,12 +25,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
         return http
-            .csrf(csrf -> 
-                csrf
-                .disable())
+            .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authRequest ->
               authRequest
-                .requestMatchers("/auth/**").permitAll() // Permitir acceso a rutas de autenticación
+                .requestMatchers("/v1/auth/**").permitAll() // Permitir acceso a rutas de autenticación
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Permitir acceso a Swagger
                 .anyRequest().authenticated()
                 )
@@ -40,7 +38,6 @@ public class SecurityConfig {
             .authenticationProvider(authProvider)
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
             .build();
-            
             
     }
 

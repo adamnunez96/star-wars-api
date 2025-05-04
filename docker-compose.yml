@@ -1,11 +1,12 @@
 services:
   postgres:
-    container_name: postgres-sql
+    container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER: username
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       PGDATA: /data/postgres
+      POSTGRES_DB: star_wars
     volumes:
       - postgres:/data/postgres
     ports:

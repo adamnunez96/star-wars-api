@@ -34,5 +34,5 @@ public class PersonProperties implements Serializable {
     //private String homeworld;
     @JsonProperty("birth_year")
     private String birthYear;
-    private String url;
+    //private String url;
 }
