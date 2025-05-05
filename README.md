@@ -17,14 +17,24 @@ To get started with this project, you will need to have the following installed 
 
 1. Clone repository: git clone https://github.com/adamnunez96/star-wars-api.git
 
-2. Configure environment variables (Optional). This is necessary in case the application is installed in a different environment than the local one, so that the DNS or IP address for paging can be dynamically managed. This is not required for a local environment.
+2. Configure environment variables. 
+- **SERVICE_URL** This is necessary in case the application is installed in a different environment than the local one, so that the DNS or IP address for paging can be dynamically managed. This is not required for a local environment.
 - In macOS/Linux:
     ```bash
     export SERVICE_URL=https://api.example.com
     ```
-- In Windows (CMD):
+- **JWT_SECRET_KEY** Required to start de aplication. The key must be encoded in base64 with a minimum of 32 bytes.
     ```bash
-    $env:SERVICE_URL = "https://api.example.com"
+    export JWT_SECRET_KEY=CHOThQcQsWscIQtarQGavmo9uB5G1t5dz6hZ4iLOpMY=
+    ```
+- **JWT_EXPIRATION_TIME** 
+Token lifetime. The value must be in milliseconds. If this value is not assigned, the token lifetime will be **30** seconds (1800000).
+    ```bash
+    export JWT_EXPIRATION_TIME=1800000
+    ```
+- **DATABASE_IP** This is necessary in case the application is installed in a different environment than the local one. By default te value is **localhost**.
+    ```
+    export DATABASE_IP=1.1.1.1
     ```
 3. Navigate to the project directory: `cd conexa.star.wars`
 4. Build the project: `mvn clean install`

@@ -26,7 +26,7 @@ public class AuthControllerDecorator implements AuthController {
 
     @Operation(
         summary = "Login User",
-        description = "Authenticate a user and return a JWT token. The token is valid for 20 minutes."
+        description = "Authenticate a user and return a JWT token."
     )
     @PostMapping(value = "login")
     @Override
@@ -36,7 +36,7 @@ public class AuthControllerDecorator implements AuthController {
 
     @Operation(
         summary = "Register User",
-        description = "Register a new user and return a JWT token. The token is valid for 20 minutes."
+        description = "Register a new user and return a JWT token. Avaible Roles: USER, ADMIN."
     )
     @PostMapping(value = "register")
     @Override
