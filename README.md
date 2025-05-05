@@ -2,7 +2,7 @@
 
 ## Description
 
-This test project demonstrates the implementation of security using Spring Boot 3, JSON Web Tokens (JWT), Unit Tests with Junit 5 and Mockito 4, Jacoco for summarization and coverage, Docker for deployment. The architecture is layered, seeking well-defined responsibilities and component scalability.
+This test project demonstrates the implementation of security using Spring Boot 3, JSON Web Tokens (JWT), Unit Tests with Junit 5 and Mockito 4, Jacoco for summarization and coverage, Docker for deployment, OpenApi for Documentation. The architecture is layered, seeking well-defined responsibilities and component scalability.
 
 The information displayed is consumed from the [Swappi](https://www.swapi.tech/documentation) API. Character query endpoints are currently implemented. Movie, Ship, and Vehicle queries will also be added in subsequent phases.
 
