@@ -11,6 +11,8 @@ import com.anunez.conexa.star.wars.bean.auth.AuthRes;
 import com.anunez.conexa.star.wars.bean.auth.LoginReq;
 import com.anunez.conexa.star.wars.bean.auth.RegisterReq;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 @RequestMapping("${version}/auth")
 @Validated
@@ -22,12 +24,20 @@ public class AuthControllerDecorator implements AuthController {
         this.authController = authController;
     }
 
+    @Operation(
+        summary = "Login User",
+        description = "Authenticate a user and return a JWT token. The token is valid for 20 minutes."
+    )
     @PostMapping(value = "login")
     @Override
     public ResponseEntity<AuthRes> login(@RequestBody LoginReq request) {
         return authController.login(request);
     }
 
+    @Operation(
+        summary = "Register User",
+        description = "Register a new user and return a JWT token. The token is valid for 20 minutes."
+    )
     @PostMapping(value = "register")
     @Override
     public ResponseEntity<AuthRes> register(@RequestBody RegisterReq request) {

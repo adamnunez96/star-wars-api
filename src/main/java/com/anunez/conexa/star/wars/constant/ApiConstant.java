@@ -15,4 +15,7 @@ public class ApiConstant {
     public static final String RESOURCE_NOT_FOUND_MESSAGE = "Resource not found: {}";
     public static final String SWAPPI_RESPONSE_MESSAGE = "Response from SWAPI: {}";
 
+    //urls
+    public static final String API_PATH = "/v1/api";
+
 }

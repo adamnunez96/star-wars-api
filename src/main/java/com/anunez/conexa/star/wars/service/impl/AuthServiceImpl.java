@@ -1,8 +1,5 @@
 package com.anunez.conexa.star.wars.service.impl;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.anunez.conexa.star.wars.bean.auth.AuthRes;
 import com.anunez.conexa.star.wars.bean.auth.LoginReq;
 import com.anunez.conexa.star.wars.bean.auth.RegisterReq;
-import com.anunez.conexa.star.wars.enums.Role;
 import com.anunez.conexa.star.wars.jwt.JwtService;
 import com.anunez.conexa.star.wars.repository.user.User;
 import com.anunez.conexa.star.wars.repository.user.UserRepository;

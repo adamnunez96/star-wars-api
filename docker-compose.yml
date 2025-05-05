@@ -1,4 +1,14 @@
 services:
+  app:
+    image: anunez96/star-wars-api:1.0.1
+    ports:
+      - "8080:8080"
+    environment:
+      - SERVICE_URL=ec2-13-59-27-108.us-east-2.compute.amazonaws.com
+    depends_on:
+      - postgres
+    networks:
+      - app-network
   postgres:
     container_name: postgres
     image: postgres
@@ -12,11 +22,11 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - postgres
+      - app-network
     restart: unless-stopped
 
 networks:
-  postgres:
+  app-network:
     driver: bridge
 
 volumes:

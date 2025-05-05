@@ -14,7 +14,7 @@ spring:
       enabled: true
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/star_wars
+    url: jdbc:postgresql://${DATABASE_IP:localhost}:5432/star_wars
     #jdbc:postgresql://13.59.27.108:5432/star_wars
     username: postgres
     password: postgres

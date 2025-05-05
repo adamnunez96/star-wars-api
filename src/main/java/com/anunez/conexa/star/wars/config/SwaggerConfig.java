@@ -1,12 +1,19 @@
 package com.anunez.conexa.star.wars.config;
 
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+
 @Configuration
+@SecurityScheme(name = "bearerAuth", 
+    scheme = "bearer", 
+    type = SecuritySchemeType.HTTP, 
+    bearerFormat = "JWT")
 public class SwaggerConfig {
 
     @Bean
@@ -15,7 +22,8 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("STAR WARS API")
                         .version("1.0.0")
-                        .description("Star Wars API Documentation")
+                        .description("API for Star Wars characters. \n" +
+                                "This API provides information about characters from the Star Wars universe.")
                         .termsOfService("http://swagger.io/terms/")
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")));
 
