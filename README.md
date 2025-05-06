@@ -33,7 +33,7 @@ Token lifetime. The value must be in milliseconds. If this value is not assigned
     export JWT_EXPIRATION_TIME=1800000
     ```
 - **DATABASE_IP** This is necessary in case the application is installed in a different environment than the local one. By default te value is **localhost**.
-    ```
+    ```bash
     export DATABASE_IP=1.1.1.1
     ```
 3. Navigate to the project directory: `cd conexa.star.wars`
