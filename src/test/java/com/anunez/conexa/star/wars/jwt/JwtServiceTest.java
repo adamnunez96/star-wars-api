@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.test.util.ReflectionTestUtils;
 
 @ExtendWith(MockitoExtension.class)
 public class JwtServiceTest {
@@ -27,6 +28,8 @@ public class JwtServiceTest {
 
     @BeforeEach
     void setUp() {
+        ReflectionTestUtils.setField(jwtService, "secretKey", "ZjUzOWRmZDE2ZjgzNWYwYjljZWU0Y2NkYTdiY2JhYWMxYTZiMGZmZDFkNDBhY2EzMGUxZTQ3MjRkMWFkMjVjZA==");
+        ReflectionTestUtils.setField(jwtService, "jwtExpiration", 1800000L);
         when(userDetails.getUsername()).thenReturn("testUser");
         token = jwtService.getToken(userDetails);
     }

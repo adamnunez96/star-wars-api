@@ -20,7 +20,6 @@ import com.anunez.conexa.star.wars.bean.PersonGetRes;
 import com.anunez.conexa.star.wars.bean.PersonGetResByName;
 import com.anunez.conexa.star.wars.exception.InternalServerException;
 import com.anunez.conexa.star.wars.exception.NotFoundException;
-import com.anunez.conexa.star.wars.service.impl.HttpClientServiceImpl;
 import com.anunez.conexa.star.wars.utils.MockUtils;
 
 @ExtendWith(MockitoExtension.class)
